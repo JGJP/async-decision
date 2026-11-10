@@ -1,6 +1,6 @@
 {
   "name": "async-decision",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Typed ESM client for decision models — TypeSafe Jev, OpenAI Decisions, Perplexity Decider, and Cloudflare Clef — behind one unified, provider-agnostic API.",
   "keywords": [
     "decision",
@@ -46,6 +46,9 @@
   ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "async-decision": "./dist/cli.js"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

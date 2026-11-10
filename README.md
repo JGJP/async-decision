@@ -94,6 +94,27 @@ createClient({ provider: myProvider });
 `decodeAnswersEnvelope` is a tolerant decoder for the common
 `{ answers: { name: {...} } }` shape with sensible field fallbacks.
 
+## CLI
+
+The package ships an `async-decision` binary (also `npx async-decision`):
+
+```bash
+async-decision \
+  -S "my card keeps getting declined, this is ridiculous" \
+  -n "billing: is this about billing?" \
+  -c "tone: customer tone = angry,calm,excited" \
+  -s "urgency: how urgent = can wait | this week | today"
+# typesafe · jev-latest
+#   billing: 0.98  (yes-probability)
+#   tone: angry  (confidence 1)  [angry 1, calm 0, excited 0]
+#   urgency: 1.97  (confidence 0.97)
+```
+
+State comes from `-S/--state`, `--state-file`, or stdin. Pick a provider with
+`-p/--provider`; the key is read from `-k/--api-key` or the provider's env var
+(`TYPESAFE_API_KEY`, `OPENAI_API_KEY`, ...). Add `--json` for the full response.
+Run `async-decision --help` for all flags.
+
 ## Primitives
 
 | Builder | Answer fields |
